@@ -1,0 +1,1 @@
+python evaluate.py --config configs/ldm/ldmvfi-vqflow-f32-c256-concat_max.yaml --ckpt ldm/models/ldmvfi-vqflow-f32-c256-concat_max.ckpt --dataset Ucf101_triplet --metrics PSNR SSIM LPIPS --data_dir ldm/data/ucf101 --out_dir eval_results/ldmvfi-vqflow-f32-c256-concat_max/ --use_ddim
