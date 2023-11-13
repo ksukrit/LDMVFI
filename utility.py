@@ -106,7 +106,7 @@ def calc_ssim(gt, out, *args):
 
 
 def calc_lpips(gt, out, *args):
-    loss_fn = lpips.LPIPS(net='alex',version='0.1').cuda()
+    loss_fn = lpips.LPIPS(net='alex',version='0.1',verbose=True).cuda()
     # return loss_fn.forward(gt, out, normalize=True)
     return loss_fn.forward(quantize(gt)/255., quantize(out)/255., normalize=True)
 
