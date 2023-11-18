@@ -350,6 +350,7 @@ class Ucf101_triplet:
         self.gt_list = []
         for item in self.im_list:
             img_t = Image.open(join(db_dir, item , 'frame1.png'))
+            img_t = img_t.convert("RGB")
             print(transforms.ToTensor()(img_t).shape)
             print(img_t.size)
             self.input3_list.append(self.transform(Image.open(join(db_dir, item , 'frame1.png'))).cuda().unsqueeze(0))
