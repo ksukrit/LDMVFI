@@ -355,8 +355,6 @@ class Ucf101_triplet:
             img_2 = img_2.convert("RGB")
             img_3 = Image.open(join(db_dir, item , 'framet.png'))
             img_3 = img_3.convert("RGB")
-            print(transforms.ToTensor()(img_t).shape)
-            print(img_t.size)
             self.input3_list.append(self.transform(img_1).cuda().unsqueeze(0))
             self.input5_list.append(self.transform(img_2).cuda().unsqueeze(0))
             self.gt_list.append(self.transform(img_3).cuda().unsqueeze(0))
