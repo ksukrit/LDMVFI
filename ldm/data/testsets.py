@@ -349,6 +349,8 @@ class Ucf101_triplet:
         self.input5_list = []
         self.gt_list = []
         for item in self.im_list:
+            img_t = Image.open(join(db_dir, item , 'frame1.png'))
+            print(img_t.size)
             self.input3_list.append(self.transform(Image.open(join(db_dir, item , 'frame1.png'))).cuda().unsqueeze(0))
             self.input5_list.append(self.transform(Image.open(join(db_dir, item , 'frame2.png'))).cuda().unsqueeze(0))
             self.gt_list.append(self.transform(Image.open(join(db_dir, item , 'framet.png'))).cuda().unsqueeze(0))
