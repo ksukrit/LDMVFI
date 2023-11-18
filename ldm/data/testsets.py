@@ -349,13 +349,17 @@ class Ucf101_triplet:
         self.input5_list = []
         self.gt_list = []
         for item in self.im_list:
-            img_t = Image.open(join(db_dir, item , 'frame1.png'))
-            img_t = img_t.convert("RGB")
+            img_1 = Image.open(join(db_dir, item , 'frame1.png'))
+            img_1 = img_1.convert("RGB")
+            img_2 = Image.open(join(db_dir, item , 'frame2.png'))
+            img_2 = img_2.convert("RGB")
+            img_3 = Image.open(join(db_dir, item , 'framet.png'))
+            img_3 = img_3.convert("RGB")
             print(transforms.ToTensor()(img_t).shape)
             print(img_t.size)
-            self.input3_list.append(self.transform(Image.open(join(db_dir, item , 'frame1.png'))).cuda().unsqueeze(0))
-            self.input5_list.append(self.transform(Image.open(join(db_dir, item , 'frame2.png'))).cuda().unsqueeze(0))
-            self.gt_list.append(self.transform(Image.open(join(db_dir, item , 'framet.png'))).cuda().unsqueeze(0))
+            self.input3_list.append(self.transform(img_1).cuda().unsqueeze(0))
+            self.input5_list.append(self.transform(img_2).cuda().unsqueeze(0))
+            self.gt_list.append(self.transform(img_3).cuda().unsqueeze(0))
 
     def eval(self, model, sample_func, metrics=['PSNR', 'SSIM'], output_dir=None, output_name='output.png', resume=False):
         model.eval()
